@@ -6,31 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>437</width>
-    <height>343</height>
+    <width>552</width>
+    <height>454</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="inquiry_btn">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>50</y>
-     <width>171</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>주차가능 대수 조회</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="regist_btn">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>120</y>
+     <x>350</x>
+     <y>220</y>
      <width>171</width>
      <height>51</height>
     </rect>
@@ -42,8 +29,8 @@
   <widget class="QPushButton" name="calcul_btn">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>200</y>
+     <x>350</x>
+     <y>300</y>
      <width>171</width>
      <height>51</height>
     </rect>
@@ -55,14 +42,40 @@
   <widget class="QPushButton" name="end_btn">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>270</y>
+     <x>350</x>
+     <y>370</y>
      <width>171</width>
      <height>51</height>
     </rect>
    </property>
    <property name="text">
     <string>종료</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="time_label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>60</y>
+     <width>67</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>입장 시간</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="start_time">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>60</y>
+     <width>101</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
    </property>
   </widget>
  </widget>

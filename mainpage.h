@@ -8,6 +8,8 @@
 #include <cstring>
 #include <string>
 #include <QMessageBox>
+#include <QTimer>
+#include "regist.h"
 
 
 namespace Ui {
@@ -24,6 +26,10 @@ public:
 
 private slots:
     void on_end_btn_clicked();
+
+    void on_regist_btn_clicked();
+
+    void show_time();
 
 private:
     Ui::mainpage *ui;

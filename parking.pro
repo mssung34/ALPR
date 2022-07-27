@@ -18,19 +18,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainpage.cpp \
-    regist.cpp \
-    show_parking.cpp
+    regist.cpp
 
 HEADERS += \
     database.h \
     mainpage.h \
-    regist.h \
-    show_parking.h
+    regist.h
 
 FORMS += \
     mainpage.ui \
-    regist.ui \
-    show_parking.ui
+    regist.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
