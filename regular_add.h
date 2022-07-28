@@ -32,6 +32,7 @@ private:
     std::string query;
     std::vector <std::string> datalist;
     QSqlQuery sql;
+    bool set_date;
 };
 
 #endif // REGULAR_ADD_H
