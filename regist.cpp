@@ -90,12 +90,23 @@ void regist::on_register_btn_clicked()
     }
     else
     {
-        sql.prepare("INSERT INTO regular (plate, start, end, phone)" "VALUES (?, ?, ?, ?)");
-        sql.addBindValue(ui->plate_txt->text());
-        sql.addBindValue(ui->start_txt->text());
-        sql.addBindValue(ui->end_txt->text());
-        sql.addBindValue(ui->phone_txt->text());
-        sql.exec();
+        query.prepare("INSERT INTO regular (plate, start, end, phone)" "VALUES (?, ?, ?, ?)");
+        query.addBindValue(ui->plate_txt->text());
+        query.addBindValue(ui->start_txt->text());
+        query.addBindValue(ui->end_txt->text());
+        query.addBindValue(ui->phone_txt->text());
+        query.exec();
+
+        query.prepare("INSERT INTO user (plate, phone, regist_user, point)" "VALUES (?, ?, ?, ?)");
+        query.addBindValue(ui->plate_txt->text());
+        query.addBindValue(ui->phone_txt->text());
+        query.addBindValue("1");
+        query.addBindValue("0");
+        query.exec();
+
+        query.first();
+        query_string="UPDATE user SET regist_user = '1' WHERE plate='"+ui->plate_txt->text().toStdString()+"'";
+        query.exec();
         QMessageBox::information(this, "", "추가완료");
         this->close();
 
@@ -107,11 +118,3 @@ void regist::on_exit_btn_clicked()
     this->close();
 }
 
-void regist::on_edit_btn_clicked()
-{
-    query = "UPDATE regular SET start = '" + ui->start_txt->text().toStdString() + "', end ='" + ui->end_txt->text().toStdString() + "' where plate = '" + ui->plate_txt->text().toStdString() +"'";
-    qDebug()<<QString::fromStdString(query);
-    sql.exec(QString::fromStdString(query));
-    QMessageBox::information(this, "", "수정완료");
-    this->close();
-}

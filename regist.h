@@ -26,13 +26,11 @@ private slots:
 
     void on_exit_btn_clicked();
 
-    void on_edit_btn_clicked();
-
 private:
     Ui::regist *ui;
-    std::string query;
+    std::string query_string;
     std::vector <std::string> datalist;
-    QSqlQuery sql;
+    QSqlQuery query;
 };
 
 #endif // REGULAR_ADD_H

@@ -1,13 +1,14 @@
 #include "mainpage.h"
 #include "ui_mainpage.h"
 #include "regist.h"
+#include "cal.h"
 
 mainpage::mainpage(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::mainpage)
 {
     ui->setupUi(this);
-    show_time();
+
 }
 
 mainpage::~mainpage()
@@ -30,11 +31,12 @@ void mainpage::on_regist_btn_clicked()
 
 }
 
-void mainpage::show_time()
+
+void mainpage::on_calcul_btn_clicked()
 {
-    QTime time = QTime::currentTime();
-    QString time_text=time.toString();
-    qDebug()<<time_text;
-    //("hh: mm : ss")
-    ui->start_time->setText(time_text);
+    this->hide();
+    cal cal;
+    cal.setModal(true);
+    cal.exec();
+    this->show();
 }

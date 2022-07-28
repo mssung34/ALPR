@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>552</width>
-    <height>454</height>
+    <width>349</width>
+    <height>374</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="regist_btn">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>220</y>
+     <x>70</x>
+     <y>70</y>
      <width>171</width>
      <height>51</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="calcul_btn">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>300</y>
+     <x>70</x>
+     <y>150</y>
      <width>171</width>
      <height>51</height>
     </rect>
@@ -42,40 +42,14 @@
   <widget class="QPushButton" name="end_btn">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>370</y>
+     <x>70</x>
+     <y>220</y>
      <width>171</width>
      <height>51</height>
     </rect>
    </property>
    <property name="text">
     <string>종료</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="time_label">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>60</y>
-     <width>67</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>입장 시간</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="start_time">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>60</y>
-     <width>101</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>TextLabel</string>
    </property>
   </widget>
  </widget>

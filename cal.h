@@ -2,6 +2,8 @@
 #define CAL_H
 
 #include <QDialog>
+#include "mainpage.h"
+#include <iostream>
 
 namespace Ui {
 class cal;
@@ -13,10 +15,30 @@ class cal : public QDialog
 
 public:
     explicit cal(QWidget *parent = nullptr);
+    void show_up();
+    void show_down();
+    void point();
+    void find();
+    void del();
     ~cal();
+
+private slots:
+    void on_find_btn_clicked();
+
+
+    void on_out_btn_clicked();
+
+    void on_cal_btn_clicked();
+
+    void on_radioButton_clicked();
 
 private:
     Ui::cal *ui;
+    std::string query_string;
+    QSqlQuery query;
+    QSqlQuery query2;
+    QSqlRecord record;
+    int slt=0;
 };
 
 #endif // CAL_H

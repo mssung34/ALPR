@@ -29,14 +29,15 @@ private slots:
 
     void on_regist_btn_clicked();
 
-    void show_time();
+    void on_calcul_btn_clicked();
 
 private:
     Ui::mainpage *ui;
     Database db;
+    std::string query_string;
     QSqlQuery query;
     QSqlRecord record;
-    std::string query_string;
+
 };
 
 #endif // MAINPAGE_H
