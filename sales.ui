@@ -50,6 +50,37 @@
     </rect>
    </property>
   </widget>
+  <widget class="QPushButton" name="before_btn">
+   <property name="geometry">
+    <rect>
+     <x>1020</x>
+     <y>30</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>지난주</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="next_btn">
+   <property name="geometry">
+    <rect>
+     <x>1150</x>
+     <y>30</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>다음주</string>
+   </property>
+  </widget>
+  <zorder>next_btn</zorder>
+  <zorder>verticalLayoutWidget</zorder>
+  <zorder>label</zorder>
+  <zorder>tableWidget</zorder>
+  <zorder>before_btn</zorder>
  </widget>
  <resources/>
  <connections/>
