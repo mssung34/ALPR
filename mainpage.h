@@ -22,6 +22,7 @@ class mainpage : public QDialog
 
 public:
     explicit mainpage(QWidget *parent = nullptr);
+    void show_parking();
     ~mainpage();
 
 private slots:

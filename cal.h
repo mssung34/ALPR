@@ -18,19 +18,22 @@ public:
     void show_up();
     void show_down();
     void point();
-    void find();
+    int find();
     void del();
+    int use_point(int charge);
+    void take_point(int charge,int remain_point);
     ~cal();
 
 private slots:
     void on_find_btn_clicked();
 
-
     void on_out_btn_clicked();
 
     void on_cal_btn_clicked();
 
-    void on_radioButton_clicked();
+    void on_point_btn_clicked();
+
+    void on_take_btn_clicked();
 
 private:
     Ui::cal *ui;
@@ -38,7 +41,9 @@ private:
     QSqlQuery query;
     QSqlQuery query2;
     QSqlRecord record;
-    int slt=0;
+    int charge;
+    int remain_point;
+
 };
 
 #endif // CAL_H

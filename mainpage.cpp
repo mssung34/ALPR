@@ -8,12 +8,26 @@ mainpage::mainpage(QWidget *parent) :
     ui(new Ui::mainpage)
 {
     ui->setupUi(this);
+    show_parking();
 
 }
 
 mainpage::~mainpage()
 {
     delete ui;
+}
+
+void mainpage::show_parking()
+{
+    query_string="SELECT plate FROM user";
+    query.exec(QString::fromStdString(query_string));
+    query.next();
+    record=query.record();
+    int car=200-query.size();
+    ui->label->setText("주차장 현황");
+    ui->label_2->setText("주차가능 대수:"+QString::fromStdString(std::to_string(car))+"");
+    ui->label_3->setText("총 주차공간:200");
+
 }
 
 void mainpage::on_end_btn_clicked()
