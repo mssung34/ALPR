@@ -25,7 +25,7 @@ user_add::user_add(std::vector<std::string> data, QWidget *parent) :
     ui->add_btn->hide();
     ui->plate_txt->setText(QString::fromStdString(data[0]));
     ui->phone_txt->setText(QString::fromStdString(data[1]));
-    if(data[2] == "1")
+    if(data[2] == "O")
     {
         ui->apply_btn->setChecked(true);
     }

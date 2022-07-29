@@ -33,7 +33,14 @@ void user::list()
     {
         ui->tableWidget->setItem(i, 0, new QTableWidgetItem(sql.value(plate).toString()));
         ui->tableWidget->setItem(i, 1, new QTableWidgetItem(sql.value(phone).toString()));
-        ui->tableWidget->setItem(i, 2, new QTableWidgetItem(sql.value(regist_user).toString()));
+        if(sql.value(regist_user).toString() == "0")
+        {
+            ui->tableWidget->setItem(i, 2, new QTableWidgetItem("X"));
+        }
+        else
+        {
+            ui->tableWidget->setItem(i, 2, new QTableWidgetItem("O"));
+        }
         ui->tableWidget->setItem(i++, 3, new QTableWidgetItem(sql.value(point).toString()));
     }
 }
