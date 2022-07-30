@@ -19,7 +19,7 @@ mainpage::~mainpage()
 
 void mainpage::show_parking()
 {
-    query_string="SELECT plate FROM user";
+    query_string="SELECT plate FROM current";
     query.exec(QString::fromStdString(query_string));
     query.next();
     record=query.record();
@@ -52,5 +52,6 @@ void mainpage::on_calcul_btn_clicked()
     cal cal;
     cal.setModal(true);
     cal.exec();
+    show_parking();
     this->show();
 }

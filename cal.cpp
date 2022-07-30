@@ -53,9 +53,9 @@ void cal::show_up() //insert 전  --> 입장 날짜,시간 출력
 int cal::find() // 현재시간 과 입장시간을 비교해서 요금 계산 및 parking 테이블 에 저장
 {
     QTime time= QTime::currentTime(); //현재시간
-    QString now_time=time.toString("HH:mm"); // 현재시간을 insert하기위해 형변환
+    QString now_time=time.toString("H:m"); // 현재시간을 insert하기위해 형변환
     QDate date = QDate::currentDate(); // 현재 날짜
-    QString now_date=date.toString("yyyy-MM-dd"); // 현재날짜 insert하기위해 형변환
+    QString now_date=date.toString("yyyy-M-d"); // 현재날짜 insert하기위해 형변환
     QDateTime now_datetime=QDateTime::currentDateTime();
 
     query_string="SELECT * FROM current WHERE plate='"+ui->plate_input->text().toStdString()+"'";
@@ -65,7 +65,7 @@ int cal::find() // 현재시간 과 입장시간을 비교해서 요금 계산 �
     QString past_date=query.value(1).toString();
     QString past_time=query.value(2).toString(); // select로 찾아온 입장시간을 string으로 저장
     QString past_datetime=past_date+" "+past_time;
-    QDateTime Past_Time = QDateTime::fromString(past_datetime, "yyyy-M-dd HH:mm");
+    QDateTime Past_Time = QDateTime::fromString(past_datetime, "yyyy-M-d H:m");
 
     int sub_time=Past_Time.secsTo(now_datetime)/60;
     charge=sub_time * 10; // 분당 50원

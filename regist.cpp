@@ -24,8 +24,8 @@ regist::regist(std::vector<std::string> data, QWidget *parent) :
     ui->plate_txt->setText(QString::fromStdString(data[0]));
     ui->start_txt->setText(QString::fromStdString(data[1]));
     ui->end_txt->setText(QString::fromStdString(data[2]));
-    QDate start = QDate::fromString(ui->start_txt->text(), "yyyy-MM-dd");
-    QDate end = QDate::fromString(ui->end_txt->text(), "yyyy-MM-dd");
+    QDate start = QDate::fromString(ui->start_txt->text(), "yyyy-M-d");
+    QDate end = QDate::fromString(ui->end_txt->text(), "yyyy-M-d");
     ui->start_date->setSelectedDate(QDate(start));
     ui->end_date->setSelectedDate(QDate(end));
 
@@ -38,14 +38,14 @@ regist::~regist()
 
 void regist::show_date()
 {
-    QString now = QDate::currentDate().toString("yyyy-MM-dd");
+    QString now = QDate::currentDate().toString("yyyy-M-d");
     ui->start_txt->setText(now);
     ui->end_txt->setText(now);
 }
 
 void regist::on_start_date_selectionChanged()
 {
-    QString change = ui->start_date->selectedDate().toString("yyyy-MM-dd");
+    QString change = ui->start_date->selectedDate().toString("yyyy-M-d");
     QDate now = QDate::currentDate();
     int days = now.daysTo(ui->start_date->selectedDate());
     if(days<0)
@@ -61,7 +61,7 @@ void regist::on_start_date_selectionChanged()
 
 void regist::on_end_date_selectionChanged()
 {
-    QString change = ui->end_date->selectedDate().toString("yyyy-MM-dd");
+    QString change = ui->end_date->selectedDate().toString("yyyy-M-d");
     int days = ui->start_date->selectedDate().daysTo(ui->end_date->selectedDate());
     if(days<0)
     {
