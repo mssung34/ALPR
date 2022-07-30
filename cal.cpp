@@ -10,7 +10,7 @@ cal::cal(QWidget *parent) :
     int w = ui->chart->width();
     int h = ui->chart->height();
     chart.load("/home/iot/사진/chart.png");
-    ui->chart->setPixmap(chart.scaled(w,h));
+    ui->chart->setPixmap(chart.scaled(w,h));  // 주차요금표 사진 경로 설정 및 크기 설정
 }
 
 cal::~cal()
@@ -18,7 +18,7 @@ cal::~cal()
     delete ui;
 }
 
-void cal::point()
+void cal::point() // user 테이블에서 phone,point  select 하기
 {
     query_string=query_string="SELECT phone,point FROM user WHERE plate='"+ui->plate_input->text().toStdString()+"'";
     query.exec(QString::fromStdString(query_string));
@@ -34,7 +34,7 @@ void cal::point()
 }
 
 
-void cal::show_up() //insert 전
+void cal::show_up() //insert 전  --> 입장 날짜,시간 출력
 {
     point();
     query_string=query_string="SELECT * FROM current WHERE plate='"+ui->plate_input->text().toStdString()+"'";
@@ -50,27 +50,25 @@ void cal::show_up() //insert 전
     }
 }
 
-int cal::find()
+int cal::find() // 현재시간 과 입장시간을 비교해서 요금 계산 및 parking 테이블 에 저장
 {
     QTime time= QTime::currentTime(); //현재시간
     QString now_time=time.toString("HH:mm"); // 현재시간을 insert하기위해 형변환
     QDate date = QDate::currentDate(); // 현재 날짜
     QString now_date=date.toString("yyyy-MM-dd"); // 현재날짜 insert하기위해 형변환
-    int Time_M=time.minute(); // 현재시간 분
-    int Time_H=time.hour(); // 현재시간 시간
-    int cal_Time=Time_H*60 + Time_M; // 총 분 으로 바꿈 (현재시간)
+    QDateTime now_datetime=QDateTime::currentDateTime();
 
     query_string="SELECT * FROM current WHERE plate='"+ui->plate_input->text().toStdString()+"'";
     query.exec(QString::fromStdString(query_string));
     query.next();
 
-    QString cur_time=query.value(2).toString(); // select로 찾아온 입장시간을 string으로 저장
-    QTime time2=time2.fromString(cur_time,"HH:mm"); // 입장시간을 QTime으로 저장
-    int Time2_M=time2.minute(); // 입장시간 int
-    int Time2_H=time2.hour(); // 입장시간 int
-    int cal_Time2=Time2_H*60 + Time2_M; // 총 분 으로 바꿈 (입장시간)
-    int all_time=cal_Time - cal_Time2; // 현재시간 - 입장시간  을 min 형태로
-    charge=all_time * 50; // 분당 50원
+    QString past_date=query.value(1).toString();
+    QString past_time=query.value(2).toString(); // select로 찾아온 입장시간을 string으로 저장
+    QString past_datetime=past_date+" "+past_time;
+    QDateTime Past_Time = QDateTime::fromString(past_datetime, "yyyy-M-dd HH:mm");
+
+    int sub_time=Past_Time.secsTo(now_datetime)/60;
+    charge=sub_time * 10; // 분당 50원
 
     query2.prepare("INSERT INTO parking (plate,date_in,time_in,date_out,time_out,charge)" "VALUES (?,?,?,?,?,?)"); // 가격 계산해서 넣어야함
     query2.addBindValue(query.value(0));
@@ -85,7 +83,7 @@ int cal::find()
 
 }
 
-void cal::show_down() // insert 후
+void cal::show_down() // insert 후 --> 퇴장 날짜,시간 결제금액 출력
 {
     query_string="SELECT date_out,time_out,charge FROM parking WHERE plate='"+ui->plate_input->text().toStdString()+"'";
     query.exec(QString::fromStdString(query_string));
@@ -102,20 +100,21 @@ void cal::show_down() // insert 후
     }
 }
 
-void cal::del()
+void cal::del() // 계산을 끝내면 current 테이블에서 해당 차량 삭제
 {
     query_string="DELETE FROM current WHERE plate='"+ui->plate_input->text().toStdString()+"'";
     query.exec(QString::fromStdString(query_string));
     query.first();
 }
 
-int cal::use_point(int charge)
+void cal::use_point(int charge) // charge를 받아서 point 사용 시 금액 계산
 {
     query_string="SELECT point FROM user WHERE plate='"+ui->plate_input->text().toStdString()+"'";
     query.exec(QString::fromStdString(query_string));
     query.next();
     record=query.record();
     int point=query.value(0).toInt();  //DB에 있는 포인트
+    std::cout<<point<<std::endl;
     if(ui->point_input->text().toInt() > point)
     {
         QMessageBox::information(this, "", "보유 포인트를 확인해주세요");
@@ -148,26 +147,36 @@ int cal::use_point(int charge)
         int point_c=record.indexOf("point");
         ui->label_7->clear();
         ui->label_7->setText("보유 포인트: "+query2.value(point_c).toString()+"\n");
-        return remain_point;
     }
 
 }
 
-void cal::take_point(int charge,int remain_point) // 포인트적립
+void cal::take_point(int charge) // 포인트적립
 {
-    int take_point=charge*(0.1); // 10% 포인트
-    int all_point=take_point+remain_point; // 적립하고 난 후 포인트
     query.prepare("INSERT INTO user (plate, phone)" "VALUES ( ?, ?)");
     query.addBindValue(ui->plate_input->text());
     query.addBindValue(ui->phone_input->text());
     query.exec();
+
+    query_string="SELECT point FROM user WHERE plate='"+ui->plate_input->text().toStdString()+"'";
+    query.exec(QString::fromStdString(query_string));
+    query.next();
+    record=query.record();
+    int point=query.value(0).toInt();  //DB에 있는 포인트
+
+    int charge_c=charge;
+    int take_point=charge_c / 10; // 10% 포인트
+    int all_point=take_point+point; // 적립하고 난 후 포인트
+    std::cout<<take_point<<std::endl;
+    std::cout<<point<<std::endl;
+    std::cout<<all_point<<std::endl;
 
     std::string tot_point=std::to_string(all_point); // 쿼리문 쓸려고 형변환
     query_string="UPDATE user SET point='"+ tot_point + "' WHERE phone='"+ui->phone_input->text().toStdString()+"'";
     query.exec(QString::fromStdString(query_string));
 
 }
-void cal::on_find_btn_clicked()
+void cal::on_find_btn_clicked() // 조회버튼 눌렀을때
 {
     query_string="SELECT plate FROM current WHERE plate='"+ui->plate_input->text().toStdString()+"'";
     query.exec(QString::fromStdString(query_string));
@@ -190,21 +199,21 @@ void cal::on_out_btn_clicked()
     this->hide();
 }
 
-void cal::on_cal_btn_clicked()
+void cal::on_cal_btn_clicked() // 계산버튼 눌렀을때
 {
 
     query_string="SELECT regist_user FROM user WHERE plate='"+ui->plate_input->text().toStdString()+"'";
     query.exec(QString::fromStdString(query_string));
     query.next();
     record=query.record();
-    if(query.value(0)==1)
+    if(query.value(0)==1) // 정기주차 유저는 나중에 한번에 결제
     {
         QMessageBox::information(this,"정기주차자","정기주차자는 월말에 한번에 결제됩니다!");
         del();
         this->hide();
 
     }
-    else
+    else // 일반유저는 계산완료 했다고 띄워줌
     {
         QMessageBox::information(this,"succse","계산 완료! 다음에 또 만나요~!");
         del();
@@ -214,13 +223,24 @@ void cal::on_cal_btn_clicked()
 
 }
 
-void cal::on_point_btn_clicked()
+void cal::on_point_btn_clicked() // 포인트 사용 버튼 클릭
 {
     use_point(charge);
 }
 
-void cal::on_take_btn_clicked()
+void cal::on_take_btn_clicked() // 포인트 적립 버튼 클릭
 {
-    take_point(charge,remain_point);
-    QMessageBox::information(this,"success","포인트 적립완료!");
+    query_string="SELECT plate FROM current WHERE plate='"+ui->plate_input->text().toStdString()+"'";
+    query.exec(QString::fromStdString(query_string));
+    query.next();
+    record=query.record();
+    if(query.value(0) !=ui->plate_input->text())
+    {
+        QMessageBox::information(this,"Error","차량 번호를 입력하세요");
+    }
+    else
+    {
+        take_point(charge);
+        QMessageBox::information(this,"success","포인트 적립완료!");
+    }
 }

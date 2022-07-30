@@ -75,6 +75,8 @@ void regist::on_end_date_selectionChanged()
 void regist::on_register_btn_clicked()
 {
     int days = ui->start_date->selectedDate().daysTo(ui->end_date->selectedDate());
+    int point=0;
+    std::string regist_point=std::to_string(point);
 
     if(ui->plate_txt->text().toStdString() == "")
     {

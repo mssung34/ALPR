@@ -20,8 +20,8 @@ public:
     void point();
     int find();
     void del();
-    int use_point(int charge);
-    void take_point(int charge,int remain_point);
+    void use_point(int charge);
+    void take_point(int charge);
     ~cal();
 
 private slots:
