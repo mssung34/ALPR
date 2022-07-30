@@ -11,6 +11,7 @@ parking::parking(QWidget *parent) :
 }
 
 
+
 parking::parking(std::string data, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::parking)
@@ -21,27 +22,34 @@ parking::parking(std::string data, QWidget *parent) :
 
 }
 
+
+
 void parking::currentlist()
 {
     ui->tableWidget->clear();
-    query = "SELECT plate, time_in FROM current";
+    query = "SELECT plate, time_in, date_in FROM current";
     sql.exec(QString::fromStdString(query));
     record = sql.record();
     int plate = record.indexOf("plate");
+    int date = record.indexOf("date_in");
     int in = record.indexOf("time_in");
-
     ui->tableWidget->setRowCount(sql.size());
+    possible = 200 - sql.size();
     ui->tableWidget->setColumnCount(record.count());
 
+    ui->label->setText("주차가능대수 : " + QString::fromStdString(std::to_string(possible)));
+
     ui->tableWidget->setHorizontalHeaderItem(0, new QTableWidgetItem("차량번호"));
-    ui->tableWidget->setHorizontalHeaderItem(1, new QTableWidgetItem("입차시간"));
+    ui->tableWidget->setHorizontalHeaderItem(1, new QTableWidgetItem("입차날짜"));
+    ui->tableWidget->setHorizontalHeaderItem(2, new QTableWidgetItem("입차시간"));
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     int i = 0;
     while(sql.next())
     {
         ui->tableWidget->setItem(i, 0, new QTableWidgetItem(sql.value(plate).toString()));
-        ui->tableWidget->setItem(i++, 1, new QTableWidgetItem(sql.value(in).toString()));
+        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(sql.value(date).toString()));
+        ui->tableWidget->setItem(i++, 2, new QTableWidgetItem(sql.value(in).toString()));
     }
 }
 

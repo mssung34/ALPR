@@ -13,14 +13,25 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
   <widget class="QLabel" name="title">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>240</x>
      <y>10</y>
-     <width>111</width>
-     <height>31</height>
+     <width>171</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <pointsize>20</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>정기 주차 등록</string>
@@ -45,8 +56,15 @@
      <height>17</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="text">
-    <string>차량 번호</string>
+    <string>차량번호</string>
    </property>
   </widget>
   <widget class="QLabel" name="start_label">
@@ -57,6 +75,13 @@
      <width>141</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>정기주차 신청날짜</string>
@@ -70,6 +95,13 @@
      <width>121</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>정기주차 종료날짜</string>
@@ -111,11 +143,23 @@
   <widget class="QPushButton" name="register_btn">
    <property name="geometry">
     <rect>
-     <x>560</x>
+     <x>578</x>
      <y>670</y>
-     <width>89</width>
-     <height>25</height>
+     <width>71</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background-color: rgb(148, 198, 65);
+	color: rgb(255, 255, 255);
+	border-radius: 5px
+}
+QPushButton:hover{
+	
+	background-color: rgb(78, 154, 6);
+	border-radius: 5px
+}</string>
    </property>
    <property name="text">
     <string>등록</string>
@@ -137,11 +181,30 @@
   <widget class="QPushButton" name="exit_btn">
    <property name="geometry">
     <rect>
-     <x>550</x>
+     <x>568</x>
      <y>10</y>
-     <width>89</width>
-     <height>25</height>
+     <width>71</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background-color: rgb(148, 198, 65);
+	color: rgb(255, 255, 255);
+	border-radius: 5px
+}
+QPushButton:hover{
+	
+	background-color: rgb(78, 154, 6);
+	border-radius: 5px
+}</string>
    </property>
    <property name="text">
     <string>나가기</string>
@@ -150,11 +213,30 @@
   <widget class="QPushButton" name="edit_btn">
    <property name="geometry">
     <rect>
-     <x>560</x>
+     <x>580</x>
      <y>670</y>
-     <width>89</width>
-     <height>25</height>
+     <width>71</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background-color: rgb(148, 198, 65);
+	color: rgb(255, 255, 255);
+	border-radius: 5px
+}
+QPushButton:hover{
+	
+	background-color: rgb(78, 154, 6);
+	border-radius: 5px
+}</string>
    </property>
    <property name="text">
     <string>수정</string>
@@ -168,6 +250,13 @@
      <width>67</width>
      <height>17</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>전화번호</string>

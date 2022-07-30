@@ -7,20 +7,31 @@
     <x>0</x>
     <y>0</y>
     <width>404</width>
-    <height>450</height>
+    <height>416</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>30</y>
-     <width>67</width>
-     <height>17</height>
+     <x>140</x>
+     <y>10</y>
+     <width>121</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <pointsize>20</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>회원 등록</string>
@@ -35,6 +46,13 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="text">
     <string>차량번호</string>
    </property>
@@ -47,6 +65,13 @@
      <width>67</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>전화번호</string>
@@ -61,6 +86,13 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="text">
     <string>정기주차</string>
    </property>
@@ -73,6 +105,13 @@
      <width>67</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>포인트</string>
@@ -158,6 +197,18 @@
      <width>221</width>
      <height>51</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background-color: rgb(148, 198, 65);
+	color: rgb(255, 255, 255);
+	border-radius: 5px
+}
+QPushButton:hover{
+	
+	background-color: rgb(78, 154, 6);
+	border-radius: 5px
+}</string>
    </property>
    <property name="text">
     <string>수정</string>

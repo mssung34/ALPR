@@ -1,8 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include "database.h"
-#
+#include <QTcpSocket>
 #include <QMainWindow>
+#include "thread.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -15,6 +16,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    void closeEvent(QCloseEvent*);
     ~MainWindow();
 
 private slots:
@@ -28,9 +30,15 @@ private slots:
 
     void on_sales_check_clicked();
 
+
+
+    void on_black_check_clicked();
+
 private:
     Ui::MainWindow *ui;
+    QTcpSocket* socket;
     Database DB;
+    Thread *thread;
 
 };
 #endif // MAINWINDOW_H

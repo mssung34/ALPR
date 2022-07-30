@@ -19,10 +19,11 @@ void sales::dailysales()
     QList<QString> days;
     // 현재 날짜로부터 6일전 날짜를 start_day로 설정
     QDate start_day = now.addDays(-6);
-    for(int i = 0; i<7; i++)
+    for(int i = 0; i<7; i++) // 날짜, 요금 리스트 만들기
     {
         // 날짜를 QString 으로 변환
-        QString x = start_day.toString("yyyy-MM-dd");
+        QString x = start_day.toString("yyyy-M-d");
+        qDebug() << x;
         // QString list에 날짜 추가
         days.append(x);
         query = "SELECT sum(charge) from parking where date_out = '" + x.toStdString() + "'";

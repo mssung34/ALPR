@@ -4,6 +4,10 @@
 #include "user.h"
 #include "parking.h"
 #include "sales.h"
+#include "blacklist.h"
+#include <QImage>
+#include <QPixmap>
+#include <QLabel>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,14 +15,28 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->move(750,250);
+    socket = new QTcpSocket(this);
+    socket->connectToHost("10.10.20.231", 9022);
+    thread = new Thread(socket, this);
+    thread->start();
 
+    QPixmap pix("/home/iot/ALPR/car.png");
+    ui->label->setPixmap(pix);
+
+
+
+}
+
+void MainWindow::closeEvent(QCloseEvent*)
+{
+    socket->close();
+    thread->exit(0);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 
 
 void MainWindow::on_regular_check_clicked()
@@ -66,4 +84,14 @@ void MainWindow::on_sales_check_clicked()
     sales.setModal(true);
     sales.exec();
     this->show();
+}
+
+void MainWindow::on_black_check_clicked()
+{
+    this->hide();
+    blacklist black;
+    black.setModal(true);
+    black.exec();
+    this->show();
+
 }

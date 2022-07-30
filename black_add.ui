@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>parking</class>
- <widget class="QDialog" name="parking">
+ <class>black_add</class>
+ <widget class="QDialog" name="black_add">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>764</width>
-    <height>576</height>
+    <width>340</width>
+    <height>236</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,22 +16,12 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
-  <widget class="QTableWidget" name="tableWidget">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>80</y>
-     <width>641</width>
-     <height>451</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="in_out_label">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>20</y>
-     <width>121</width>
+     <x>70</x>
+     <y>10</y>
+     <width>201</width>
      <height>41</height>
     </rect>
    </property>
@@ -44,37 +34,26 @@
     </font>
    </property>
    <property name="text">
-    <string>입출차내역</string>
+    <string>블랙리스트 등록</string>
    </property>
   </widget>
-  <widget class="QLabel" name="in_label">
+  <widget class="QLineEdit" name="plate_txt">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>10</y>
-     <width>171</width>
-     <height>61</height>
+     <x>142</x>
+     <y>100</y>
+     <width>131</width>
+     <height>31</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <family>Sans</family>
-     <pointsize>20</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>현재 입차 내역</string>
-   </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>50</y>
-     <width>191</width>
-     <height>21</height>
+     <x>60</x>
+     <y>100</y>
+     <width>67</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -85,7 +64,39 @@
     </font>
    </property>
    <property name="text">
-    <string/>
+    <string>차량번호</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="add_btn">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>170</y>
+     <width>221</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background-color: rgb(148, 198, 65);
+	color: rgb(255, 255, 255);
+	border-radius: 5px
+}
+QPushButton:hover{
+	
+	background-color: rgb(78, 154, 6);
+	border-radius: 5px
+}</string>
+   </property>
+   <property name="text">
+    <string>등록</string>
    </property>
   </widget>
  </widget>

@@ -18,11 +18,13 @@ public:
     void parkinglist();
     void currentlist();
 
+
 private:
     Ui::parking *ui;
     std::string query;
     QSqlQuery sql;
     QSqlRecord record;
+    int possible;
 };
 
 #endif // PARKING_H

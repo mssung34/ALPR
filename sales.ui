@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
@@ -23,22 +26,6 @@
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout"/>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>10</y>
-     <width>121</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">font: 20pt &quot;Ubuntu&quot;;</string>
-   </property>
-   <property name="text">
-    <string>일별 매출</string>
-   </property>
   </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
@@ -53,11 +40,30 @@
   <widget class="QPushButton" name="before_btn">
    <property name="geometry">
     <rect>
-     <x>1020</x>
+     <x>1070</x>
      <y>30</y>
-     <width>89</width>
-     <height>25</height>
+     <width>81</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background-color: rgb(148, 198, 65);
+	color: rgb(255, 255, 255);
+	border-radius: 5px
+}
+QPushButton:hover{
+	
+	background-color: rgb(78, 154, 6);
+	border-radius: 5px
+}</string>
    </property>
    <property name="text">
     <string>지난주</string>
@@ -66,21 +72,61 @@
   <widget class="QPushButton" name="next_btn">
    <property name="geometry">
     <rect>
-     <x>1150</x>
+     <x>1168</x>
      <y>30</y>
-     <width>89</width>
-     <height>25</height>
+     <width>81</width>
+     <height>41</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+	background-color: rgb(148, 198, 65);
+	color: rgb(255, 255, 255);
+	border-radius: 5px
+}
+QPushButton:hover{
+	
+	background-color: rgb(78, 154, 6);
+	border-radius: 5px
+}</string>
    </property>
    <property name="text">
     <string>다음주</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>20</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Sans</family>
+     <pointsize>25</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>일별 매출</string>
+   </property>
+  </widget>
   <zorder>next_btn</zorder>
   <zorder>verticalLayoutWidget</zorder>
-  <zorder>label</zorder>
   <zorder>tableWidget</zorder>
   <zorder>before_btn</zorder>
+  <zorder>label</zorder>
  </widget>
  <resources/>
  <connections/>

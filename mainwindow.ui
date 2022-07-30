@@ -6,51 +6,123 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>578</width>
-    <height>510</height>
+    <width>556</width>
+    <height>526</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="user_check">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>60</y>
-      <width>181</width>
-      <height>51</height>
+      <x>120</x>
+      <y>140</y>
+      <width>151</width>
+      <height>91</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Sans</family>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">
+QPushButton{
+	background-color: rgb(148, 198, 65);
+	color: rgb(255, 255, 255);
+	border-radius: 5px
+}
+QPushButton:hover{
+	
+	background-color: rgb(78, 154, 6);
+	border-radius: 5px
+
+}</string>
     </property>
     <property name="text">
      <string>회원 조회</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="parking_check">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>300</y>
-      <width>181</width>
-      <height>51</height>
+      <x>280</x>
+      <y>240</y>
+      <width>151</width>
+      <height>91</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Sans</family>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPushButton{
+	background-color: rgb(148, 198, 65);
+	color: rgb(255, 255, 255);
+	border-radius: 5px
+}
+QPushButton:hover{
+	
+	background-color: rgb(78, 154, 6);
+	border-radius: 5px
+
+}</string>
+    </property>
     <property name="text">
-     <string>입출차 내역 조회</string>
+     <string>입출차 내역</string>
     </property>
    </widget>
    <widget class="QPushButton" name="sales_check">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>380</y>
-      <width>181</width>
-      <height>51</height>
+      <x>280</x>
+      <y>340</y>
+      <width>151</width>
+      <height>101</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans</family>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPushButton{
+	background-color: rgb(148, 198, 65);
+	color: rgb(255, 255, 255);
+	border-radius: 5px
+}
+QPushButton:hover{
+	
+	background-color: rgb(78, 154, 6);
+	border-radius: 5px
+
+}</string>
     </property>
     <property name="text">
      <string>매출 조회</string>
@@ -59,27 +131,158 @@
    <widget class="QPushButton" name="regular_check">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>140</y>
-      <width>181</width>
-      <height>51</height>
+      <x>120</x>
+      <y>340</y>
+      <width>151</width>
+      <height>101</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Sans</family>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPushButton{
+	background-color: rgb(148, 198, 65);
+	color: rgb(255, 255, 255);
+	border-radius: 5px
+}
+QPushButton:hover{
+	
+	background-color: rgb(78, 154, 6);
+	border-radius: 5px
+
+}</string>
+    </property>
     <property name="text">
-     <string>정기 주차 조회</string>
+     <string>정기 주차</string>
     </property>
    </widget>
    <widget class="QPushButton" name="current_check">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>220</y>
-      <width>181</width>
-      <height>51</height>
+      <x>280</x>
+      <y>140</y>
+      <width>151</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Noto Sans CJK JP</family>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPushButton{
+	background-color: rgb(148, 198, 65);
+	color: rgb(255, 255, 255);
+	border-radius: 5px
+}
+QPushButton:hover{
+	
+	background-color: rgb(78, 154, 6);
+	border-radius: 5px
+
+}</string>
+    </property>
+    <property name="text">
+     <string>입차 조회</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="black_check">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>240</y>
+      <width>151</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans</family>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+QPushButton{
+	background-color: rgb(148, 198, 65);
+	color: rgb(255, 255, 255);
+	border-radius: 5px
+}
+QPushButton:hover{
+	
+	background-color: rgb(78, 154, 6);
+	border-radius: 5px
+
+}</string>
+    </property>
+    <property name="text">
+     <string>블랙리스트</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>40</y>
+      <width>101</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="text">
-     <string>현재 입차차량 조회</string>
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>car.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>65</y>
+      <width>181</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Sans</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>하남공영주차장</string>
     </property>
    </widget>
   </widget>
@@ -88,7 +291,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>578</width>
+     <width>556</width>
      <height>22</height>
     </rect>
    </property>

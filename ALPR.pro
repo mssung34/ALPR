@@ -1,4 +1,4 @@
-QT       += core gui sql charts
+QT       += core gui sql charts network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,26 +16,34 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    black_add.cpp \
+    blacklist.cpp \
     main.cpp \
     mainwindow.cpp \
     parking.cpp \
     regular_add.cpp \
     regular_parking.cpp \
     sales.cpp \
+    thread.cpp \
     user.cpp \
     user_add.cpp
 
 HEADERS += \
+    black_add.h \
+    blacklist.h \
     database.h \
     mainwindow.h \
     parking.h \
     regular_add.h \
     regular_parking.h \
     sales.h \
+    thread.h \
     user.h \
     user_add.h
 
 FORMS += \
+    black_add.ui \
+    blacklist.ui \
     mainwindow.ui \
     parking.ui \
     regular_add.ui \
