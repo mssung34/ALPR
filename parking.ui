@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string/>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -19,10 +19,10 @@
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>80</y>
-     <width>641</width>
-     <height>451</height>
+     <x>30</x>
+     <y>90</y>
+     <width>701</width>
+     <height>461</height>
     </rect>
    </property>
   </widget>

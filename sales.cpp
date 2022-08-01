@@ -23,7 +23,6 @@ void sales::dailysales()
     {
         // 날짜를 QString 으로 변환
         QString x = start_day.toString("yyyy-M-d");
-        qDebug() << x;
         // QString list에 날짜 추가
         days.append(x);
         query = "SELECT sum(charge) from parking where date_out = '" + x.toStdString() + "'";

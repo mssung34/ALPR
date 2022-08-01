@@ -1,6 +1,6 @@
 #include "parking.h"
 #include "ui_parking.h"
-
+#include <QMessageBox>
 parking::parking(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::parking)
@@ -57,9 +57,10 @@ void parking::currentlist()
 void parking::parkinglist()
 {
     ui->tableWidget->clear();
-    query = "SELECT plate, date_in, time_in, date_out, time_out, charge FROM parking";
+    query = "SELECT num, plate, date_in, time_in, date_out, time_out, charge FROM parking";
     sql.exec(QString::fromStdString(query));
     record = sql.record();
+    int num = record.indexOf("num");
     int plate = record.indexOf("plate");
     int time_in = record.indexOf("time_in");
     int time_out = record.indexOf("time_out");
@@ -70,23 +71,25 @@ void parking::parkinglist()
     ui->tableWidget->setRowCount(sql.size());
     ui->tableWidget->setColumnCount(record.count());
 
-    ui->tableWidget->setHorizontalHeaderItem(0, new QTableWidgetItem("차량번호"));
-    ui->tableWidget->setHorizontalHeaderItem(1, new QTableWidgetItem("입차날짜"));
-    ui->tableWidget->setHorizontalHeaderItem(2, new QTableWidgetItem("입차시간"));
-    ui->tableWidget->setHorizontalHeaderItem(3, new QTableWidgetItem("출차날짜"));
-    ui->tableWidget->setHorizontalHeaderItem(4, new QTableWidgetItem("출차시간"));
-    ui->tableWidget->setHorizontalHeaderItem(5, new QTableWidgetItem("요금"));
+    ui->tableWidget->setHorizontalHeaderItem(0, new QTableWidgetItem("번호"));
+    ui->tableWidget->setHorizontalHeaderItem(1, new QTableWidgetItem("차량번호"));
+    ui->tableWidget->setHorizontalHeaderItem(2, new QTableWidgetItem("입차날짜"));
+    ui->tableWidget->setHorizontalHeaderItem(3, new QTableWidgetItem("입차시간"));
+    ui->tableWidget->setHorizontalHeaderItem(4, new QTableWidgetItem("출차날짜"));
+    ui->tableWidget->setHorizontalHeaderItem(5, new QTableWidgetItem("출차시간"));
+    ui->tableWidget->setHorizontalHeaderItem(6, new QTableWidgetItem("요금"));
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     int i = 0;
     while(sql.next())
     {
-        ui->tableWidget->setItem(i, 0, new QTableWidgetItem(sql.value(plate).toString()));
-        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(sql.value(date_in).toString()));
-        ui->tableWidget->setItem(i, 2, new QTableWidgetItem(sql.value(time_in).toString()));
-        ui->tableWidget->setItem(i, 3, new QTableWidgetItem(sql.value(date_out).toString()));
-        ui->tableWidget->setItem(i, 4, new QTableWidgetItem(sql.value(time_out).toString()));
-        ui->tableWidget->setItem(i++, 5, new QTableWidgetItem(sql.value(charge).toString()));
+        ui->tableWidget->setItem(i, 0, new QTableWidgetItem(sql.value(num).toString()));
+        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(sql.value(plate).toString()));
+        ui->tableWidget->setItem(i, 2, new QTableWidgetItem(sql.value(date_in).toString()));
+        ui->tableWidget->setItem(i, 3, new QTableWidgetItem(sql.value(time_in).toString()));
+        ui->tableWidget->setItem(i, 4, new QTableWidgetItem(sql.value(date_out).toString()));
+        ui->tableWidget->setItem(i, 5, new QTableWidgetItem(sql.value(time_out).toString()));
+        ui->tableWidget->setItem(i++, 6, new QTableWidgetItem(sql.value(charge).toString()));
     }
 
 }
@@ -95,3 +98,5 @@ parking::~parking()
 {
     delete ui;
 }
+
+
