@@ -7,11 +7,9 @@ regist::regist(QWidget *parent) :
     ui(new Ui::regist)
 {
     ui->setupUi(this);
-    ui->edit_btn->hide();
     show_date();
     QTime time = QTime::currentTime();
     QString time_text=time.toString();
-    qDebug()<<time_text;
 
 }
 

@@ -6,11 +6,6 @@ cal::cal(QWidget *parent) :
     ui(new Ui::cal)
 {
     ui->setupUi(this);
-    QPixmap chart;
-    int w = ui->chart->width();
-    int h = ui->chart->height();
-    chart.load("/home/iot/사진/chart.png");
-    ui->chart->setPixmap(chart.scaled(w,h));  // 주차요금표 사진 경로 설정 및 크기 설정
 }
 
 cal::~cal()

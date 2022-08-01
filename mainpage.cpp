@@ -9,6 +9,11 @@ mainpage::mainpage(QWidget *parent) :
 {
     ui->setupUi(this);
     show_parking();
+    QPixmap chart;
+    int w = ui->label_5->width();
+    int h = ui->label_5->height();
+    chart.load("/home/iot/사진/car.png");
+    ui->label_5->setPixmap(chart.scaled(w,h));  //
 
 }
 
